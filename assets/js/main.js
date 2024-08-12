@@ -6,4 +6,7 @@ const submit = document.querySelector('.submit');
 const time = document.querySelector('.textbox');    
 
 const model1 = new CountdownModel();
-submit.addEventListener('click', () => model1.downTime(time.value));
+submit.addEventListener('click', () => {
+    model1.setTime(time.value);
+    model1.downTime();
+});
