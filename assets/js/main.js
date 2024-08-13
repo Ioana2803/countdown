@@ -2,11 +2,20 @@ import CountdownModel from "./model.js";
 
 console.log('main.js loaded...');
 
-const submit = document.querySelector('.submit');
+const setTime = document.querySelector('.set-time');
+const start = document.querySelector('.start');
+const pause = document.querySelector('.pause');
+const reset = document.querySelector('.reset');
+
 const time = document.querySelector('.textbox');    
 
 const model1 = new CountdownModel();
-submit.addEventListener('click', () => {
+let initialTime = 0;
+setTime.addEventListener('click', () => {
     model1.setTime(time.value);
-    model1.downTime();
+    initialTime = time.value;
+    time.value = " ";
 });
+start.addEventListener('click', () => model1.start());
+pause.addEventListener('click', () => model1.pause());
+reset.addEventListener('click', () => model1.reset(initialTime));

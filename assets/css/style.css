@@ -1,0 +1,33 @@
+.container{
+    height: 25rem;
+    width: 40rem;
+}
+
+.countdown{
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    background-color: aquamarine;
+    align-items: center;
+    justify-content: center;
+}
+
+.box{
+    height: 10rem;
+    width: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.text{
+    font-size: 5rem;
+}
+
+.separator{
+    height: 4rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
