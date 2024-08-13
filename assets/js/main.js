@@ -1,4 +1,5 @@
 import CountdownModel from "./model.js";
+import CountdownView from "./view.js";
 
 console.log('main.js loaded...');
 
@@ -8,6 +9,9 @@ const pause = document.querySelector('.pause');
 const reset = document.querySelector('.reset');
 
 const time = document.querySelector('.textbox');    
+// const seconds = document.querySelector('.seconds');
+// seconds.addEventListener('input');
+
 
 const model1 = new CountdownModel();
 let initialTime = 0;

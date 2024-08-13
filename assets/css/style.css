@@ -27,7 +27,22 @@
 }
 
 .separator{
-    height: 4rem;
     margin-left: 1rem;
     margin-right: 1rem;
+}
+
+.setting-time{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.pause{
+    margin: 0rem 0.5rem 0rem 0.5rem;
 }
