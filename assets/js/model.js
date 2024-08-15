@@ -2,9 +2,9 @@ export default class CountdownModel{
     constructor(){
         this.countedSeconds = 0;
         this.interval = null;
+        this.observers = [];
 
-        // this.setTime(initialSeconds);
-        // console.log(this.getTime());
+        this.notifyObservers();
     }
 
     setTime(seconds){
@@ -14,12 +14,16 @@ export default class CountdownModel{
         }
         this.countedSeconds = seconds;
     }
+    
+    formatTime(timeUnits){
+        return timeUnits > 9 ? String(timeUnits) : '0' + timeUnits;
+    }
 
     getTime(){
         const hours = Math.floor(this.countedSeconds / 3600);
         let remainingSeconds = this.countedSeconds - (hours * 3600);
-        
-        const minutes = Math.floor(this.countedSeconds / 60);
+
+        const minutes = Math.floor(remainingSeconds / 60);
         remainingSeconds -= (minutes * 60);
 
         return{
@@ -29,8 +33,19 @@ export default class CountdownModel{
         }
     }
 
-    formatTime(timeUnits){
-        return timeUnits > 9 ? String(timeUnits) : '0' + timeUnits;
+    getAvailableActions(){
+        return{
+            canBeStarted: !Boolean(this.interval),
+            canBeStopped: Boolean(this.interval),
+            canBeReset: Boolean(this.countedSeconds)
+        }
+    }
+
+    get state(){
+        return{
+            time: this.getTime(),
+            actions: this.getAvailableActions()
+        }
     }
 
     start(){
@@ -39,10 +54,11 @@ export default class CountdownModel{
         }
         
         console.log("========");
-        console.log(this.getTime());
+        this.notifyObservers();
+
         this.interval = setInterval(() => {
             this.countedSeconds--;
-            console.log(this.getTime());
+            this.notifyObservers();
             
             if(this.countedSeconds <= 0){
                 clearInterval(this.interval);
@@ -56,6 +72,7 @@ export default class CountdownModel{
             clearInterval(this.interval);
             this.interval = null;
         }
+        this.notifyObservers();
     }
 
     reset(seconds){
@@ -63,6 +80,17 @@ export default class CountdownModel{
         console.log(`timer resets to ${seconds} seconds`);
         this.countedSeconds = seconds;
 
-        console.log(this.getTime());
+        this.notifyObservers();
+    }
+
+    addObserver(newObserver){
+        this.observers.push(newObserver);
+        newObserver.update(this.state);
+    }
+
+    notifyObservers(){
+        for (let i = 0; i < this.observers.length; i++){
+            this.observers[i].update(this.state);
+        }
     }
 }
