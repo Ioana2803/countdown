@@ -2,7 +2,6 @@ export default class CountdownView{
     constructor(parentDOMElement, countdownModel){
         this.parent = parentDOMElement;
         this.model = countdownModel;
-        this.initialTime = 0;
 
         this.init();
         this.model.addObserver(this);
@@ -112,12 +111,12 @@ export default class CountdownView{
         this.minutes.innerText = state.time.minutes;
         this.seconds.innerText = state.time.seconds;
 
-        this.hours.contentEditable = state.actions.canBeStarted ? true : false;
-        this.minutes.contentEditable = state.actions.canBeStarted ? true : false;
-        this.seconds.contentEditable = state.actions.canBeStarted ? true : false;
+        this.hours.contentEditable = state.actions.canBeStarted;
+        this.minutes.contentEditable = state.actions.canBeStarted;
+        this.seconds.contentEditable = state.actions.canBeStarted;
 
-        this.start.disabled = state.actions.canBeStarted ? false : true;
-        this.pause.disabled = state.actions.canBeStopped ? false : true;
-        this.reset.disabled = state.actions.canBeReseted ? false : true;
+        this.start.disabled = !state.actions.canBeStarted;
+        this.pause.disabled = !state.actions.canBeStopped;
+        this.reset.disabled = !state.actions.canBeReset;
     }
 }

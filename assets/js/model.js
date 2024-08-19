@@ -1,6 +1,7 @@
 export default class CountdownModel{
-    constructor(){
-        this.countedSeconds = 0;
+    constructor(initialTime = 60){
+        this.initialTime = initialTime;
+        this.countedSeconds = this.initialTime;
         this.interval = null;
         this.observers = [];
 
@@ -13,15 +14,16 @@ export default class CountdownModel{
             clearInterval(this.interval);
         }
         this.countedSeconds = seconds;
+        this.initialTime = seconds;
     }
     
     formatTime(timeUnits){
         return timeUnits > 9 ? String(timeUnits) : '0' + timeUnits;
     }
 
-    getTime(){
-        const hours = Math.floor(this.countedSeconds / 3600);
-        let remainingSeconds = this.countedSeconds - (hours * 3600);
+    getTime(seconds){
+        const hours = Math.floor(seconds / 3600);
+        let remainingSeconds = seconds - (hours * 3600);
 
         const minutes = Math.floor(remainingSeconds / 60);
         remainingSeconds -= (minutes * 60);
@@ -37,15 +39,19 @@ export default class CountdownModel{
         return{
             canBeStarted: !Boolean(this.interval),
             canBeStopped: Boolean(this.interval),
-            canBeReset: Boolean(this.countedSeconds)
+            canBeReset: this.countedSeconds !== this.initialTime
         }
     }
 
     get state(){
-        return{
-            time: this.getTime(),
+        const state = {
+            initialTime: this.getTime(this.initialTime),
+            time: this.getTime(this.countedSeconds),
             actions: this.getAvailableActions()
         }
+        console.log(state);
+        
+        return state;
     }
 
     start(){
@@ -75,10 +81,10 @@ export default class CountdownModel{
         this.notifyObservers();
     }
 
-    reset(seconds){
+    reset(){
         this.pause();
-        console.log(`timer resets to ${seconds} seconds`);
-        this.countedSeconds = seconds;
+        this.countedSeconds = this.initialTime;
+        console.log(`timer resets to ${this.countedSeconds} seconds`);
 
         this.notifyObservers();
     }
