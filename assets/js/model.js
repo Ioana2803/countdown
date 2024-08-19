@@ -15,6 +15,7 @@ export default class CountdownModel{
         }
         this.countedSeconds = seconds;
         this.initialTime = seconds;
+        this.notifyObservers();
     }
     
     formatTime(timeUnits){
@@ -49,7 +50,6 @@ export default class CountdownModel{
             time: this.getTime(this.countedSeconds),
             actions: this.getAvailableActions()
         }
-        console.log(state);
         
         return state;
     }

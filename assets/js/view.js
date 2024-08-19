@@ -8,6 +8,11 @@ export default class CountdownView{
     }
 
     init(){
+        // creating time text div
+        this.timeTextDiv = document.createElement('div');
+        this.timeTextDiv.classList.add('time-text');
+        this.parent.append(this.timeTextDiv);
+
         // creating countdown div
         this.countdownDiv = document.createElement('div');
         this.countdownDiv.classList.add('countdown');
@@ -24,7 +29,7 @@ export default class CountdownView{
         this.hours.innerText = '00';
         this.hours.setAttribute('contenteditable', 'true');
         this.box.append(this.hours);
-        this.hours.addEventListener('keyup', () => this.setTime());
+        this.hours.addEventListener('focusout', () => this.setTime());
 
         // creating separators div
         this.separators = document.createElement('div');
@@ -44,7 +49,7 @@ export default class CountdownView{
         this.minutes.setAttribute('contenteditable', 'true');
         this.minutes.innerText = '00';
         this.box.append(this.minutes);
-        this.minutes.addEventListener('keyup', () => this.setTime());
+        this.minutes.addEventListener('focusout', () => this.setTime());
 
         // creating separators div
         this.separators = document.createElement('div');
@@ -64,7 +69,7 @@ export default class CountdownView{
         this.seconds.setAttribute('contenteditable', 'true');
         this.seconds.innerText = '00';
         this.box.append(this.seconds);
-        this.seconds.addEventListener('keyup', () => this.setTime());
+        this.seconds.addEventListener('focusout', () => this.setTime());
 
         // creating buttons div
         this.buttons = document.createElement('div');
@@ -73,21 +78,21 @@ export default class CountdownView{
 
         // creating start button
         this.start = document.createElement('button');
-        this.start.classList.add('start');
+        this.start.classList.add('start', 'btn');
         this.buttons.append(this.start);
         this.start.innerText = 'Start';
         this.start.addEventListener('click', () => this.model.start());
 
         //creating pause button
         this.pause = document.createElement('button');
-        this.pause.classList.add('pause');
+        this.pause.classList.add('pause', 'btn');
         this.buttons.append(this.pause);
         this.pause.innerText = 'Pause';
         this.pause.addEventListener('click', () => this.model.pause());
 
         //creating reset button
         this.reset = document.createElement('button');
-        this.reset.classList.add('reset');
+        this.reset.classList.add('reset', 'btn');
         this.buttons.append(this.reset);
         this.reset.innerText = 'Reset';
         this.reset.addEventListener('click', () => this.model.reset());
@@ -106,6 +111,8 @@ export default class CountdownView{
     update(state){
         console.log(`time:`);
         console.log(state.time);
+
+        this.timeTextDiv.innerText = `Timer set to: ${state.initialTime.hours} hours ${state.initialTime.minutes} minutes ${state.initialTime.seconds} seconds`;
 
         this.hours.innerText = state.time.hours;
         this.minutes.innerText = state.time.minutes;
