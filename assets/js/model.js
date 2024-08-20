@@ -48,7 +48,9 @@ export default class CountdownModel{
         const state = {
             initialTime: this.getTime(this.initialTime),
             time: this.getTime(this.countedSeconds),
-            actions: this.getAvailableActions()
+            actions: this.getAvailableActions(),
+
+            passedTimePercent: Math.floor(this.countedSeconds * 100 / this.initialTime)
         }
         
         return state;

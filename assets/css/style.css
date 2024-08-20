@@ -1,10 +1,23 @@
+:root{
+    --div-height: 10rem;
+    --countDown-pBar-bgColor: rgba(255, 255, 255, 0.541);
+}
+
+body
+{
+    font-family: "Afacad", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background: linear-gradient(45deg, rgba(132,102,252,1) 0%, rgba(76,100,236,1) 41%, rgba(75,155,251,1) 100%);
+    background-size: cover;
+}
+
 .container{
     width: 45rem;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
 }
 
 .time-text{
@@ -20,9 +33,10 @@
     align-items: center;
     justify-content: center;
 
-    height: 10rem;
-    background-color: rgb(133, 231, 255);
+    height: var(--div-height);
+    background-color: var(--countDown-pBar-bgColor);
     border: none;
+    margin-top: 1rem;
     border-radius: 0.8rem;
 }
 
@@ -31,7 +45,7 @@
     align-items: center;
     justify-content: center;
 
-    height: 10rem;
+    height: var(--div-height);
     width: 10rem;
     margin-left: 2.5rem;
     margin-right: 2.5rem;
@@ -41,12 +55,42 @@
     font-size: 5rem;
 }
 
+.separators{
+    font-size: 4rem;
+}
+
+.progress-bar{
+    display: flex;
+    justify-content: center;
+
+    margin-top: 1.5rem;
+}
+
+.pBar-item{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.bar{
+    border: none;
+    border-radius: 0.8rem;
+    height: 1rem;
+    width: 35rem;
+}
+
+.bar-fill{
+    height: 100%;
+    border-radius: 0.8rem;
+    background-color: var(--countDown-pBar-bgColor);
+}
+
 .buttons{
     display: flex;
     justify-content: center;
 
     height: 3rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     font-size: 3rem;
 }
 
@@ -63,11 +107,108 @@
 }
 
 .btn:disabled{
-    background-color: rgba(112, 109, 109, 0.623);
+    background-color: rgba(207, 207, 207, 0.685);
     color: black;
     cursor: not-allowed;
 }
 
 .pause{
     margin: 0rem 2rem 0rem 2rem;
+}
+
+/* tablets*/
+@media only screen and (max-width: 768px){
+    .container{
+        width: 70vw;
+    }
+
+    .time-text{
+        text-align: center;
+        height: 2rem;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .countdown{
+        height: 7rem;
+    }
+
+    .text{
+        font-size: 4rem;
+    }
+
+    .bar{
+        width: 60vw;
+    }
+
+    .box{
+        height: 7rem;
+        width: 13vw;
+        margin: 0.5rem 1.2rem 0.5rem 1.2rem;
+    }
+
+    .separators{
+        font-size: 3rem;
+        padding-bottom: calc(var(--separators-height)*0.1);
+    }
+
+    .buttons{
+        height: 2.5rem;
+        margin-top: 2rem;
+    }
+
+    .btn{
+        width: 4rem;
+    }
+
+    .pause{
+        margin: 0rem 2rem 0rem 2rem;
+    }
+
+    /*large=> mobile*/
+    @media only screen and (max-width: 470px){ 
+    .container
+    {
+        width: 80vw;
+    }
+
+    .counter
+    {
+        height: 6rem;
+    }
+
+    .text{
+        font-size: 3.5rem;
+    }
+
+    .box
+    {
+        font-size: 3.5rem;
+        height: 6rem;
+        width: 13vw;
+        margin: 0.5rem 1rem 0.5rem 1rem;
+    }
+
+    .separators
+    {
+        font-size: 2.5rem;
+        padding-bottom: calc(var(--separators-height)*0.05);
+    }
+
+    .buttons
+    {
+        height: 2.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .btnSt
+    {
+        width: calc(var(--button-width) - 1rem);
+    }
+
+    .pause
+    {
+        margin: 0rem 1rem 0rem 1rem;
+    }
+}
 }
