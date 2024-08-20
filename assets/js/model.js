@@ -50,7 +50,7 @@ export default class CountdownModel{
             time: this.getTime(this.countedSeconds),
             actions: this.getAvailableActions(),
 
-            passedTimePercent: Math.floor(this.countedSeconds * 100 / this.initialTime)
+            passedTimePercent: Math.round(this.countedSeconds * 100 / this.initialTime)
         }
         
         return state;
