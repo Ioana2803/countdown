@@ -72,7 +72,7 @@ body
 }
 
 .bar{
-    border: none;
+    border: 1px solid black;
     border-radius: 0.8rem;
     height: 1rem;
     width: 35rem;
