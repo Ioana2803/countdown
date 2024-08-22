@@ -1,6 +1,7 @@
 :root{
     --div-height: 10rem;
     --countDown-pBar-bgColor: rgba(255, 255, 255, 0.541);
+    --top-text-size: 1.5rem; 
 }
 
 body
@@ -20,10 +21,21 @@ body
     transform: translate(-50%, -50%);
 }
 
+.top-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.span-text{
+    text-align: center;
+    font-size: var(--top-text-size);
+}
+
 .time-text{
     text-align: center;
     height: 2rem;
-    font-size: 1.5rem;
+    font-size: var(--top-text-size);
 }
 
 .countdown{
@@ -121,9 +133,13 @@ body
         width: 70vw;
     }
 
+    .span-text{
+        font-size: 1.4rem;
+    }
+
     .time-text{
         height: 3rem;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .countdown{
@@ -162,6 +178,7 @@ body
         margin: 0rem 2rem 0rem 2rem;
     }
 
+
     /*large=> mobile*/
     @media only screen and (max-width: 470px){ 
     .container
@@ -174,9 +191,13 @@ body
         height: 6rem;
     }
 
+    .span-text{
+        font-size: 1.3rem;
+    }
+
     .time-text{
         height: 2.7rem;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .text{

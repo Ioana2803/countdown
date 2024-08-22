@@ -9,9 +9,18 @@ export default class CountdownView{
 
     init(){
         // creating time text div
-        this.timeTextDiv = document.createElement('div');
-        this.timeTextDiv.classList.add('time-text');
-        this.parent.append(this.timeTextDiv);
+        this.textDiv = document.createElement('div');
+        this.textDiv.classList.add('top-text');
+        this.parent.append(this.textDiv);
+
+        this.timeSpan = document.createElement('span');
+        this.timeSpan.classList.add('span-text');
+        this.timeSpan.innerText = 'Timer set to:'
+        this.textDiv.append(this.timeSpan);
+
+        this.timeText = document.createElement('div');
+        this.timeText.classList.add('time-text');
+        this.textDiv.append(this.timeText);
 
 
         // creating buttons div
@@ -114,7 +123,7 @@ export default class CountdownView{
         console.log(`time:`);
         console.log(state.time);
 
-        this.timeTextDiv.innerText = `Timer set to: ${state.initialTime.hours} hours ${state.initialTime.minutes} minutes ${state.initialTime.seconds} seconds`;
+        this.timeText.innerText = `${state.initialTime.hours} hours ${state.initialTime.minutes} minutes ${state.initialTime.seconds} seconds`;
 
         this.hours.innerText = state.time.hours;
         this.minutes.innerText = state.time.minutes;
