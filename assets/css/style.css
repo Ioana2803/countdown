@@ -160,6 +160,7 @@ body
 }
 
 .btn{
+    text-align: center;
     color: white;
     background-color: #0b3d91;
     border: none;
@@ -312,18 +313,13 @@ body
         height: 2rem;
     }
 
-    .start{
+    .btn{
         width: 3rem;
     }
 
     .pause
     {
         margin: 0rem 1rem 0rem 1rem;
-        width: 3rem;
-    }
-
-    .reset{
-        width: 3rem;
     }
 
     .percentage{
@@ -394,18 +390,9 @@ body
         margin-top: 1.5rem;
     }
 
-    .start{
-        width: 3rem;
-    }
-
     .pause
     {
         margin: 0rem 0.5rem 0rem 0.5rem;
-        width: 3rem;
-    }
-
-    .reset{
-        width: 3rem;
     }
 
     .percentage{
