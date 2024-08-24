@@ -11,7 +11,7 @@ body
     font-optical-sizing: auto;
     font-style: normal;
     color: #0b3d91;
-    background: linear-gradient(155deg, rgba(26,115,232,1) 20%, rgba(107,207,251,1) 53%, rgba(137,194,217,1) 100%);
+    background: linear-gradient(90deg, rgba(47,137,255,1) 7%, rgba(107,207,251,1) 53%, rgba(255,255,255,1) 100%);
     background-size: cover;
 }
 
