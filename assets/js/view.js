@@ -22,34 +22,6 @@ export default class CountdownView{
         this.timeText.classList.add('time-text');
         this.textDiv.append(this.timeText);
 
-
-        // creating buttons div
-        this.buttons = document.createElement('div');
-        this.buttons.classList.add('buttons');
-        this.parent.append(this.buttons);
-
-        // creating start button
-        this.start = document.createElement('button');
-        this.start.classList.add('start', 'btn');
-        this.buttons.append(this.start);
-        this.start.innerText = 'Start';
-        this.start.addEventListener('click', () => this.model.start());
-
-        //creating pause button
-        this.pause = document.createElement('button');
-        this.pause.classList.add('pause', 'btn');
-        this.buttons.append(this.pause);
-        this.pause.innerText = 'Pause';
-        this.pause.addEventListener('click', () => this.model.pause());
-
-        //creating reset button
-        this.reset = document.createElement('button');
-        this.reset.classList.add('reset', 'btn');
-        this.buttons.append(this.reset);
-        this.reset.innerText = 'Reset';
-        this.reset.addEventListener('click', () => this.model.reset());
-
-
         // creating countdown div
         this.countdownDiv = document.createElement('div');
         this.countdownDiv.classList.add('countdown');
@@ -107,6 +79,32 @@ export default class CountdownView{
         this.seconds.innerText = '00';
         this.box.append(this.seconds);
         this.seconds.addEventListener('focusout', () => this.setTime());
+
+        // creating buttons div
+        this.buttons = document.createElement('div');
+        this.buttons.classList.add('buttons');
+        this.parent.append(this.buttons);
+
+        // creating start button
+        this.start = document.createElement('button');
+        this.start.classList.add('start', 'btn');
+        this.buttons.append(this.start);
+        this.start.innerText = 'Start';
+        this.start.addEventListener('click', () => this.model.start());
+
+        //creating pause button
+        this.pause = document.createElement('button');
+        this.pause.classList.add('pause', 'btn');
+        this.buttons.append(this.pause);
+        this.pause.innerText = 'Pause';
+        this.pause.addEventListener('click', () => this.model.pause());
+
+        //creating reset button
+        this.reset = document.createElement('button');
+        this.reset.classList.add('reset', 'btn');
+        this.buttons.append(this.reset);
+        this.reset.innerText = 'Reset';
+        this.reset.addEventListener('click', () => this.model.reset());
     }
 
     setTime(){
