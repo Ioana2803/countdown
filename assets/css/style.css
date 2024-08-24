@@ -426,20 +426,6 @@ body
         margin-top: 0.2rem;
     }
 
-    .start{
-        width: 3rem;
-    }
-
-    .pause
-    {
-        margin: 0rem 0.5rem 0rem 0.5rem;
-        width: 3rem;
-    }
-
-    .reset{
-        width: 3rem;
-    }
-
     .percentage{
         top: 90%;
         font-size: 1rem;
