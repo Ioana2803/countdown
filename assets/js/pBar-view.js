@@ -8,6 +8,7 @@ export class ProgressBarView{
     }
 
     init(){
+        //div exterior
         // creating progress bar 
         this.pBarDiv = document.createElement('div');
         this.pBarDiv.classList.add('progress-bar');
@@ -23,7 +24,20 @@ export class ProgressBarView{
         this.fill.classList.add('bar-ext-fill');
         this.extPCircle.append(this.fill);
 
-        
+
+        //div intermediar
+        //creating circle for the color
+        this.colorCircle = document.createElement('div');
+        this.colorCircle.classList.add('color-fill-div');
+        this.parent.append(this.colorCircle);
+
+        //creating the color div
+        this.colorFill = document.createElement('div');
+        this.colorFill.classList.add('color-fill');
+        this.colorCircle.append(this.colorFill);
+
+
+        //visible div
         // creating progress bar2
         this.pBarDiv2 = document.createElement('div');
         this.pBarDiv2.classList.add('progress-bar2');
@@ -43,16 +57,11 @@ export class ProgressBarView{
         this.progressCircle = document.createElement('div');
         this.progressCircle.classList.add('int-circle');
         this.pBarDiv2.append(this.progressCircle);
-
-        //creating int circle fill div
-        this.intFill = document.createElement('div');
-        this.intFill.classList.add('bar-int-fill');
-        this.progressCircle.append(this.intFill);
     }
 
     update(state){
          // progress bar
          this.value.innerText = `${state.passedTimePercent}%`;
-         this.fill.style.background = `conic-gradient(rgba(255, 0, 0, 1) ${state.passedTimePercent}%, rgba(255, 255, 255, 0.50) 0% 100%)`;
+         this.fill.style.background = `conic-gradient(rgba(11,61,145,1) ${state.passedTimePercent}%, rgba(255, 255, 255, 0) 0% 100%)`;
     }
 } 
